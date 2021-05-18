@@ -1,21 +1,23 @@
-.header__container {
+.header {
   display: flex;
   height: 74px;
   margin: 0;
   margin-top: 45px;
+  border-bottom: 1px solid #545454;
 }
 
 @media (max-width: 1023px) {
-  .header__container {
+  .header {
     margin-left: 3%;
+    margin-right: 3%;
     margin-top: 28px;
   }
 }
 
 @media (max-width: 767px) {
-  .header__container {
+  .header {
     height: 56px;
     margin-left: 9%;
-    margin-top: 28px;
+    margin-right: 9%;
   }
 }
