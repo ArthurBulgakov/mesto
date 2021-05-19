@@ -12,6 +12,7 @@
   background-position: center;
   background-size: 10px;
   cursor: pointer;
+  transition: opacity 0.2s ease-in;
 }
 
 .profile__edit-button:hover {
