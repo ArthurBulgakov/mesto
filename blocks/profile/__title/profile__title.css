@@ -1,0 +1,10 @@
+.profile__title {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 767px) {
+  .profile__title {
+    margin-top: 23px;
+  }
+}

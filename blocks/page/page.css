@@ -2,4 +2,5 @@
   margin: 0 auto;
   overflow: hidden;
   max-width: 880px;
+  z-index: 1;
 }
