@@ -9,6 +9,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0;
   padding-bottom: 13px;
+  color: black;
+}
+
+.popup__description::placeholder {
+  color: black;
+  font-size: 14px;
+  line-height: 1.21;
 }
 
 @media (max-width: 650px) {
