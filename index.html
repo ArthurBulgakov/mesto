@@ -7,18 +7,9 @@
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="body">
-  <div class="popup">
-    <form class="popup__container">
-      <button class="popup__close-button"></button>
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <input class="popup__name" type="text">
-      <input class="popup__description" type="text">
-        <button class="popup__save-button" type="submit">Сохранить</button>
-    </form>
-  </div>  
   <div class="page">
     <header class="header">
-        <object class="header__logo" data="./images/header_logo.svg" type="image/svg+xml"></object>
+        <img class="header__logo" src="./images/header_logo.png" alt="Лого">
     </header>
     <main class="content">
       <section class="profile">
@@ -26,53 +17,53 @@
         <div class="profile__info">
           <div class="profile__title">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button>
+            <button class="profile__edit-button" type="button"></button>
           </div>
           <p class="profile__description">Исследователь океана</p>        
         </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
       <section class="elements">
         <div class="element">
           <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
           <div class="element__description">
             <h2 class="element__title">Карачаевск</h2>
-            <div class="element__like"></div>
+            <button class="element__like" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
           <div class="element__description">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <div class="element__like"></div>
+            <button class="element__like" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
           <div class="element__description">
             <h2 class="element__title">Домбай</h2>
-            <div class="element__like"></div>
+            <button class="element__like" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
           <div class="element__description">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <div class="element__like"></div>
+            <button class="element__like" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
           <div class="element__description">
             <h2 class="element__title">Домбай</h2>
-            <div class="element__like"></div>
+            <button class="element__like" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="КЧР">
           <div class="element__description">
             <h2 class="element__title">Карачаево-Черкесская Республика</h2>
-            <div class="element__like"></div>
+            <button class="element__like" type="button"></button>
           </div>
         </div>
       </section>
@@ -81,6 +72,17 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
+  <div class="popup">
+    <button class="popup__close-button" type="button"></button>
+    <div class="popup__container" >
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="popupForm">
+        <input class="popup__input" type="text" name="nameInput" id="nameInput">
+        <input class="popup__input" type="text" name="jobInput" id="jobInput">
+        <button class="popup__save-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>  
   <script src="./scripts/script.js"></script>
 </body>
 </html>

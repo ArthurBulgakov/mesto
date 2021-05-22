@@ -1,7 +1,7 @@
 .elements {
   display: grid;
   width: 100%;
-  grid-template-columns: 282px 282px 282px;
+  grid-template-columns: repeat(3, 282px);
   grid-template-rows: auto;
   column-gap: calc((880px - 282px * 3) / 2);
   row-gap: 20px;
@@ -14,7 +14,7 @@
     justify-content: center;
     margin-right: auto;
     margin-left: auto;
-    grid-template-columns: 282px 282px;
+    grid-template-columns: repeat(2, 282px);
     
   }
 }
