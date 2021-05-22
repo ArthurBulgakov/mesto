@@ -1,17 +1,18 @@
 let adventerName = document.querySelector('.profile__name');
-let adventerDescription = document.querySelector('.profile__description');
-let edit_button = document.querySelector('.profile__edit-button');
+let adventerJob = document.querySelector('.profile__description');
+let editButton = document.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
-let close_button = document.querySelector('.popup__close-button');
-let save_button = document.querySelector('.popup__save-button');
-let popupName = document.querySelector('.popup__name')
-let popupDescription = document.querySelector('.popup__description')
+let closeButton = document.querySelector('.popup__close-button');
+let saveButton = document.querySelector('.popup__save-button');
+let nameInput = document.getElementById('nameInput')
+let jobInput = document.getElementById('jobInput')
 let elements = document.querySelectorAll('.element')
+let formElement = document.querySelector('.popup__form')
 
 function openPopup () {
   popup.classList.add('popup_opened');
-  popupName.value = adventerName.textContent;
-  popupDescription.value = adventerDescription.textContent;
+  nameInput.value = adventerName.textContent;
+  jobInput.value = adventerJob.textContent;
 };
 
 function closePopup () {
@@ -20,31 +21,11 @@ function closePopup () {
 
 function saveParams (evt) {
   evt.preventDefault();
-  if (popupName.value !== '' && popupDescription.value !== '') {
-    closePopup();
-    adventerName.textContent = popupName.value;
-    adventerDescription.textContent = popupDescription.value;
-  } else if (popupName.value === '' && popupDescription.value !== '') {
-    closePopup();
-    adventerDescription.textContent = popupDescription.value;
-  } else if (popupName.value !== '' && popupDescription.value === '') {
-    closePopup();
-    adventerName.textContent = popupName.value;
-  } else {
-    closePopup();
-  };
+  closePopup();
+  adventerName.textContent = nameInput.value;
+  adventerJob.textContent = jobInput.value;
 }
 
-let makeLike = (event) => {
-  let el = event.currentTarget
-  el.classList.toggle('element_liked')
-}
-
-elements.forEach(element => {
-  let like = element.querySelector('.element__like')
-  like.addEventListener('click', (event) => makeLike(event))
-})
-
-edit_button.addEventListener('click', openPopup);
-close_button.addEventListener('click', closePopup);
-save_button.addEventListener('submit', saveParams);
+editButton.addEventListener('click', openPopup);
+closeButton.addEventListener('click', closePopup);
+formElement.addEventListener('submit', saveParams);
