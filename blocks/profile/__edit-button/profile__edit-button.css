@@ -7,7 +7,7 @@
   background-color: black;
   border: 1px solid white;
   box-sizing: border-box;
-  background-image: url(../../../images/edit_button.png);
+  background-image: url(../../../images/edit_button.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 10px;
@@ -18,7 +18,7 @@
   opacity: 0.6;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 920px) {
   .profile__edit-button {
     margin-left: 10px;
     width: 18px;

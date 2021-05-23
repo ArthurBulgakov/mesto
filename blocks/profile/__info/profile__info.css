@@ -1,4 +1,5 @@
-.profile__info {
-display: flex;
-flex-direction: column;
+@media (max-width:920px) {
+  .profile__info {
+    margin-top: 23px;
+  }
 }
