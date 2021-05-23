@@ -5,12 +5,23 @@
   color: #ffffff;
   margin: 0;
   margin-top: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 500px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 920px) {
   .profile__description {
+    max-width: 350px;
     margin-top: 14px;
     font-size: 14px;
     text-align: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .profile__description {
+    max-width: 250px;
   }
 }

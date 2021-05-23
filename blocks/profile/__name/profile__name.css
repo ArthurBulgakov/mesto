@@ -4,11 +4,22 @@
   font-weight: 500;
   color: #ffffff;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 500px;
 }
 
 @media (max-width: 920px) {
   .profile__name {
+    max-width: 322px;
     font-size: 27px;
     line-height: 1.22;
+  }
+}
+
+@media (max-width: 425px) {
+  .profile__name {
+    max-width: 222px;
   }
 }

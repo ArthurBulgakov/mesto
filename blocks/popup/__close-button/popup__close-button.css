@@ -9,8 +9,10 @@
   cursor: pointer;
   transition: opacity 0.2s ease-in;
   padding: 0;
-  margin-top: 155px;
-  margin-left: 470px;
+  background-size: 100%;
+  align-self: flex-end;
+  margin-top: -40px;
+  margin-right: -40px;
 }
 
 .popup__close-button:hover {
@@ -22,9 +24,7 @@
   .popup__close-button {
     width: 26px;
     height: 26px;
-    background-size: 100%;
-    margin-top: 85px;
-    margin-bottom: 13px;
-    margin-left: 256px;
+    margin-right: 0;
+    margin-top: -39px;
   }
 }
