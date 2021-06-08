@@ -1,11 +1,11 @@
 .popup {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
-  position: fixed; /*задал fixed для оверлея, т.к. по-другому отцентровать попап на экране краиво не используя маргины у меня не получилось. И по комментарию из первого ревью - что элемент не должен выбиваться из общего потока - насколько я понял, попап как раз-таки и должен выбиваться, потому что он ложится поверх всего остального контента */
+  position: fixed; 
   width: 100vw;
   height: 100vh;
   align-items: center;
-  justify-content: center; /* тут отцентровал попап на оверлее */
-  align-content: center; /* тут отцентровал попап на оверлее */
+  justify-content: center; 
+  align-content: center;
   z-index: 2;
 }
