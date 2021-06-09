@@ -20,6 +20,7 @@ let formEdit = document.querySelector('.popup_type-edit');
 let formAdd = document.querySelector('.popup_type-add');
 const elementsWrapper = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#cardTemplate').content;
+const cardElem = cardTemplate.querySelector('.element');
 
 const initialCards = [
   {
@@ -48,38 +49,23 @@ const initialCards = [
   }
 ];
 
-const renderCards = () => {
-  const cardElem = cardTemplate.querySelector('.element');
-
-  initialCards.forEach((card, index) => {
-   renderSingleCard(cardElem, card, index);
-  })
-}
-
-const renderSingleCard = (element, card, index) => {
+const renderSingleCard = (element, card) => {
   const clonedElement = element.cloneNode(true);
-  clonedElement.dataset.index = index;
-  if (element) {
     clonedElement.querySelector('.element__image').src = card.link;
     clonedElement.querySelector('.element__image').alt = card.name;
     clonedElement.querySelector('.element__title').textContent = card.name;
-    elementsWrapper.append(clonedElement);
-  } else {
-    clonedElement.querySelector('.element__image').src = cardLinkInput.value;
-    clonedElement.querySelector('.element__image').alt = cardNameInput.value;
-    clonedElement.querySelector('.element__title').textContent = cardNameInput.value;
     elementsWrapper.prepend(clonedElement);
-  }
-  setButtonListeners(clonedElement, index);
+
+  setButtonListeners(clonedElement);
 
 }
 
-const setButtonListeners = (element, index) => {
+const setButtonListeners = (element) => {
     let like = element.querySelector('.element__like');
     let remove = element.querySelector('.element__remove');
     let elemPopup = element.querySelector('.element__image');
     like.addEventListener('click', (evt) => makeLike(evt));
-    remove.addEventListener('click', () => removeCard(index));
+    remove.addEventListener('click', (evt) => removeCard(evt));
     elemPopup.addEventListener('click', () => openPopupCard(element));
 }
 
@@ -88,8 +74,10 @@ let makeLike = (evt) => {
   el.classList.toggle('element__like_liked');
 }
 
-let removeCard = (index) => {
-  elementsWrapper.querySelector(`[data-index="${index}"]`).remove();
+let removeCard = (evt) => {
+  let el = evt.currentTarget;
+  const deletedCard = el.closest('.element');
+  deletedCard.remove();
 }
 
 
@@ -130,7 +118,7 @@ function saveParams (evt) {
 
 function handlerSubmit (evt) {
   evt.preventDefault();
-  renderSingleCard;
+  renderSingleCard(cardElem, {name: `${cardNameInput.value}`, link: `${cardLinkInput.value}`});
   closePopup();
   cardNameInput.value = '';
   cardLinkInput.value = '';
@@ -144,4 +132,7 @@ closeButtonAdd.addEventListener('click', closePopup);
 closeButtonCard.addEventListener('click', closePopup);
 formEdit.addEventListener('submit', saveParams);
 formAdd.addEventListener('submit', handlerSubmit);
-renderCards();
+
+initialCards.forEach(card => {
+  renderSingleCard(cardElem, card);
+ })
