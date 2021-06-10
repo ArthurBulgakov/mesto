@@ -3,11 +3,11 @@
   visibility: hidden;
   opacity: 0;
   display: flex;
-  position: fixed; 
+  position: fixed;
   width: 100vw;
   height: 100vh;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   align-content: center;
   z-index: 2;
   transition: visibility 0.1s, opacity 0.2s linear;
