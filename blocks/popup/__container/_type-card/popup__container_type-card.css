@@ -1,0 +1,9 @@
+.popup__container_type-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0px;
+  width: auto;
+  background-color: white;
+  border-radius: 0px;
+  max-width: 75vw;
+}

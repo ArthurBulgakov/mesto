@@ -1,0 +1,9 @@
+.popup__title_type-card {
+  color: white;
+  font-size: 12px;
+  line-height: 1.25;
+  margin:0;
+  justify-self: end;
+  margin-bottom: -25px;
+  padding: 0;
+}
