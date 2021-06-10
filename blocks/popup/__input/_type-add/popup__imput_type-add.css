@@ -1,0 +1,5 @@
+.popup__input_type-add::placeholder {
+  line-height: 1.21;
+  font-size: 14px;
+  color: #C4C4C4;
+}

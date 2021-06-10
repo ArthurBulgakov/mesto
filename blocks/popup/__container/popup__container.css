@@ -6,13 +6,11 @@
   min-height: 330px;
   background-color: white;
   border-radius: 10px;
-  /* тут убрал маргин */
 }
 
 @media (max-width: 650px) {
   .popup__container {
     width: 282px;
     min-height: 322px;
-     /* тут убрал маргин */
   }
 }

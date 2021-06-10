@@ -1,0 +1,10 @@
+.popup__image {
+  margin-bottom: 10px;
+  max-height: 75vh;
+}
+
+@media (max-width: 650px) {
+  .popup__image {
+    margin-top: 13px;
+  }
+}
