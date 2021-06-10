@@ -104,7 +104,9 @@ function closePopup () {
   } else if (popupAdd.classList.contains("popup_opened")){
     popupAdd.classList.remove('popup_opened')
   } else if (popupCard.classList.contains("popup_opened")){
-    popupCard.classList.remove('popup_opened')
+    popupCard.classList.remove('popup_opened');
+    popupImage.removeAttribute('src');
+    popupImage.removeAttribute('alt');
   }
 };
 
