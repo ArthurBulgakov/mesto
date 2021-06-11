@@ -13,7 +13,7 @@ const saveButton = document.querySelector('.popup__save-button');
 const addButton = document.querySelector('.profile__add-button');
 const nameInput = document.getElementById('nameInput');
 const jobInput = document.getElementById('jobInput');
-let elements = document.querySelectorAll('.element');
+const elements = document.querySelectorAll('.element');
 const cardNameInput = document.getElementById('placeNameInput');
 const cardLinkInput = document.getElementById('urlPlaceInput');
 const formEdit = document.querySelector('.popup_type-edit');
@@ -28,63 +28,68 @@ const createCard = (element, card) => {
   clonedElementImage.src = card.link;
   clonedElementImage.alt = card.name;
   clonedElement.querySelector('.element__title').textContent = card.name;
-  
-  addCard(clonedElement);
-  setCardListeners(clonedElement);
 
+  setCardListeners(clonedElement);
+  return clonedElement
 }
 
-const addCard = element => {
-  elementsWrapper.prepend(element);
+const addCard = (element, card) => {
+  elementsWrapper.prepend(createCard(element, card));
 }
 
 const setCardListeners = (element) => {
-    let like = element.querySelector('.element__like');
-    let remove = element.querySelector('.element__remove');
-    let elemPopup = element.querySelector('.element__image');
+    const like = element.querySelector('.element__like');
+    const remove = element.querySelector('.element__remove');
+    const elemPopup = element.querySelector('.element__image');
     like.addEventListener('click', (evt) => toggleLike(evt));
     remove.addEventListener('click', (evt) => removeCard(evt));
     elemPopup.addEventListener('click', () => openPopupCard(element));
 }
 
-let toggleLike = (evt) => {
-  let el = evt.currentTarget;
+const toggleLike = (evt) => {
+  const el = evt.currentTarget;
   el.classList.toggle('element__like_liked');
 }
 
-let removeCard = (evt) => {
-  let el = evt.currentTarget;
+const removeCard = (evt) => {
+  const el = evt.currentTarget;
   const deletedCard = el.closest('.element');
   deletedCard.remove();
 }
 
-
 function openPopupEdit () {
-  popupEditProfile.classList.add('popup_opened');
   nameInput.value = adventerName.textContent;
   jobInput.value = adventerJob.textContent;
+  openPopup(popupEditProfile);
 };
 
 function openPopupAdd () {
-  popupAddCard.classList.add('popup_opened');
+  openPopup(popupAddCard);
+}
+
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
 };
 
 function openPopupCard (element) {
   const elTitle = element.querySelector('.element__title');
-  popupCard.classList.add('popup_opened');
   popupCardTitle.textContent = elTitle.textContent;
   popupImage.setAttribute("src", `${element.querySelector('.element__image').src}`);
   popupImage.setAttribute("alt", `${elTitle.textContent}`);
+  openPopup(popupCard);
 };
 
-function closePopup (evt) {
-  let el = evt.currentTarget;
-  const closesPopup = el.closest('.popup');
-  closesPopup.classList.remove('popup_opened');
+function closeAddCardPopup (evt) {
   cardNameInput.value = '';
   cardLinkInput.value = '';
-};
+  closePopup(evt);
+}
 
+function closePopup (evt) {
+  const el = evt.currentTarget;
+  const closesPopup = el.closest('.popup');
+  closesPopup.classList.remove('popup_opened');
+};
 
 function submitEditProfileForm (evt) {
   evt.preventDefault();
@@ -95,21 +100,20 @@ function submitEditProfileForm (evt) {
 
 function submitAddCardForm (evt) {
   evt.preventDefault();
-  createCard(cardElem, {name: `${cardNameInput.value}`, link: `${cardLinkInput.value}`});
+  addCard(cardElem, {name: `${cardNameInput.value}`, link: `${cardLinkInput.value}`});
   closePopup(evt);
   cardNameInput.value = '';
   cardLinkInput.value = '';
 }
 
-
 editButton.addEventListener('click', openPopupEdit);
 addButton.addEventListener('click', openPopupAdd);
 closeEditProfilePopupBtn.addEventListener('click', closePopup);
-closeAddCardPopupBtn.addEventListener('click', closePopup);
+closeAddCardPopupBtn.addEventListener('click', closeAddCardPopup);
 closeCardPopupBtn.addEventListener('click', closePopup);
 formEdit.addEventListener('submit', submitEditProfileForm);
 formAdd.addEventListener('submit', submitAddCardForm);
 
 initialCards.forEach(card => {
-  createCard(cardElem, card);
+  addCard(cardElem, card);
  })
