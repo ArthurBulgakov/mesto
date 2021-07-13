@@ -20,7 +20,6 @@ const checkValidity = (formElement, inputElement, config) => {
 
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
-    console.log(inputElement.validity);
     return !inputElement.validity.valid;
   })
 }
