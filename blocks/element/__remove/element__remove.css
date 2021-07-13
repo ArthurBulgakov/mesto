@@ -1,5 +1,6 @@
 .element__remove {
   background-image: url(../../../images/remove_icon.svg);
+  background-repeat: no-repeat;
   width: 18px;
   height: 19px;
   margin: 0;
