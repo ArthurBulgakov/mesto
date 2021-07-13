@@ -1,0 +1,7 @@
+.popup__overlay {
+  display: inherit;
+  position: absolute;
+  width: 100vw;
+  height: 100vw;
+  z-index: 1;
+}
