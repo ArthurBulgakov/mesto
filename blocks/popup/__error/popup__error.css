@@ -1,4 +1,4 @@
-.popup__input-error {
+.popup__error {
   visibility: hidden;
   margin: 0;
   margin-top: 5px;
@@ -12,7 +12,7 @@
 }
 
 @media (max-width: 650px) {
-  .popup__input-error {
+  .popup__error {
     max-width: 238px;
     width: 100%;
   }
