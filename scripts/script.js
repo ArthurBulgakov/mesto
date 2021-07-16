@@ -59,25 +59,28 @@ const removeCard = (evt) => {
 }
 
 function openPopupEdit () {
+  const inputs = Array.from(popupEditProfile.querySelectorAll(config.inputSelector));
+  const button = popupEditProfile.querySelector(config.submitButtonSelector);
   nameInput.value = adventerName.textContent;
   jobInput.value = adventerJob.textContent;
+  toggleButtonState(inputs, button, config);
   errorCleaner(config);
   openPopup(popupEditProfile);
 };
 
 function openPopupAdd () {
+  const inputs = Array.from(popupAddCard.querySelectorAll(config.inputSelector));
+  const button = popupAddCard.querySelector(config.submitButtonSelector);
+  cardNameInput.value = '';
+  cardLinkInput.value = '';
+  toggleButtonState(inputs, button, config);
   errorCleaner(config);
   openPopup(popupAddCard);
 }
 
 function openPopup (popup) {
-  const inputs = Array.from(popup.querySelectorAll(config.inputSelector));
-  const button = popup.querySelector(config.submitButtonSelector);
   popup.classList.add('popup_opened');
-  cardNameInput.value = '';
-  cardLinkInput.value = '';
   document.addEventListener('keyup', closePopupByEsc);
-  toggleButtonState(inputs, button, config);
 };
 
 function openPopupCard (element) {
