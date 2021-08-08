@@ -6,3 +6,5 @@ const config = {
   inputErrorClass: 'popup__error',
   errorClass: 'popup__error_active'
 };
+
+export {config}
