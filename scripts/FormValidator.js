@@ -1,5 +1,3 @@
-import { config } from "./config.js";
-
 export default class FormValidator {
   constructor (config, form) {
     this._inputSelector = config.inputSelector;

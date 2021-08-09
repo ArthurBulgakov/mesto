@@ -29,23 +29,8 @@ const popupFormEdit = document.getElementById('popupFormEdit');
 const popupFormAdd = document.getElementById('popupFormAdd');
 const formValidatorEdit = new FormValidtor(config, popupFormEdit);
 const formValidatorAdd = new FormValidtor(config, popupFormAdd);
+const cardTemplateSelector = '#cardTemplate';
 
-const setCardListeners = (element) => {
-    const like = element.querySelector('.element__like');
-    const remove = element.querySelector('.element__remove');
-    const elemPopup = element.querySelector('.element__image');
-    like.addEventListener('click', (evt) => toggleLike(evt));
-    remove.addEventListener('click', (evt) => removeCard(evt));
-    elemPopup.addEventListener('click', () => openPopupCard(element));
-}
-
-const toggleLike = (evt) => {
-  evt.currentTarget.classList.toggle('element__like_liked');
-}
-
-const removeCard = (evt) => {
-  evt.currentTarget.closest('.element').remove();
-}
 
 function openPopupEdit () {
   nameInput.value = adventerName.textContent;
@@ -66,14 +51,6 @@ function openPopupAdd () {
 function openPopup (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', closePopupByEsc);
-};
-
-function openPopupCard (element) {
-  const elTitle = element.querySelector('.element__title');
-  popupCardTitle.textContent = elTitle.textContent;
-  popupImage.setAttribute("src", `${element.querySelector('.element__image').src}`);
-  popupImage.setAttribute("alt", `${elTitle.textContent}`);
-  openPopup(popupCard);
 };
 
 function handlePopup (evt) {
@@ -100,10 +77,9 @@ function submitEditProfileForm (evt) {
 
 function submitAddCardForm (evt) {
   evt.preventDefault();
-  const cardElem = new Card({name: `${cardNameInput.value}`, link: `${cardLinkInput.value}`});
+  const cardElem = new Card({name: `${cardNameInput.value}`, link: `${cardLinkInput.value}`}, cardTemplateSelector);
   const cardElement = cardElem.generateCard();
   elementsWrapper.prepend(cardElement);
-  setCardListeners(cardElement);
   closeAddCardPopup(evt);
 }
 
@@ -120,10 +96,9 @@ const closePopupByEsc = (evt) => {
 const renderElements = () => {
   elementsWrapper.innerHTML = '';
   initialCards.forEach(card => {
-    const cardElem = new Card(card);
+    const cardElem = new Card(card, cardTemplateSelector);
     const cardElement = cardElem.generateCard();
     elementsWrapper.append(cardElement);
-    setCardListeners(cardElement);
    })
 }
 
