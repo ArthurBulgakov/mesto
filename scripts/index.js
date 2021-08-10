@@ -48,6 +48,13 @@ function openPopupAdd () {
   openPopup(popupAddCard);
 }
 
+function openPopupCard (caption, image) {
+  popupCardTitle.textContent = caption.textContent;
+  popupImage.setAttribute("src", `${image.src}`);
+  popupImage.setAttribute("alt", `${caption.textContent}`);
+  openPopup(popupCard)
+}
+
 function openPopup (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', closePopupByEsc);
@@ -77,7 +84,7 @@ function submitEditProfileForm (evt) {
 
 function submitAddCardForm (evt) {
   evt.preventDefault();
-  const cardElem = new Card({name: `${cardNameInput.value}`, link: `${cardLinkInput.value}`}, cardTemplateSelector);
+  const cardElem = new Card({name: `${cardNameInput.value}`, link: `${cardLinkInput.value}`}, cardTemplateSelector, openPopupCard);
   const cardElement = cardElem.generateCard();
   elementsWrapper.prepend(cardElement);
   closeAddCardPopup(evt);
@@ -96,7 +103,7 @@ const closePopupByEsc = (evt) => {
 const renderElements = () => {
   elementsWrapper.innerHTML = '';
   initialCards.forEach(card => {
-    const cardElem = new Card(card, cardTemplateSelector);
+    const cardElem = new Card(card, cardTemplateSelector, openPopupCard);
     const cardElement = cardElem.generateCard();
     elementsWrapper.append(cardElement);
    })
