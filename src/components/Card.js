@@ -1,9 +1,9 @@
 export default class Card {
-  constructor (cardData, template, openPopupCard) {
+  constructor (cardData, template, handleCardClick) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._template = template;
-    this._openPopupCard = openPopupCard;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate () {
@@ -24,11 +24,11 @@ export default class Card {
     this._elementDeleteBtn.closest('.element').remove();
   }
 
-  _setCardListeners (image, like, dltBtn, element) {
+  _setCardListeners (image, like, dltBtn) {
     like.addEventListener('click', () => this._toggleLike());
     dltBtn.addEventListener('click', () => this._removeCard());
     image.addEventListener('click', () => {
-      this._openPopupCard(this._elementTitle, this._elementImage, element) //спасибо за подробные объяснения, из теоретической части я как-то не усвоил что можно передавать функции извне в конструктор и исользовать их!
+      this._handleCardClick(this._name, this._link)
     });
   }
 
@@ -41,7 +41,7 @@ export default class Card {
     this._elementImage.setAttribute('src', this._link);
     this._elementImage.setAttribute('alt', this._name);
     this._elementTitle.textContent = this._name;
-    this._setCardListeners(this._elementImage, this._elementLike, this._elementDeleteBtn, this._element)
+    this._setCardListeners(this._elementImage, this._elementLike, this._elementDeleteBtn)
     return this._element
   }
 }
