@@ -34,14 +34,14 @@ const popupEdit = new PopupWithForm(
   
   }
 );
-const popupAdd = new PopupWithForm(config.popupAdd, (item) => {
-  const cardElem = new Card(
-    { name: item.placeNameInput, link: item.urlPlaceInput },
-    cardTemplateSelector,
-    handleCardClick
-  );
+
+const createCard = (item, cardTemplateSelector, handleCardClick) => {
+  const cardElem = new Card(item, cardTemplateSelector, handleCardClick);
   const cardElement = cardElem.generateCard();
   cardsList.addItem(cardElement);
+}
+const popupAdd = new PopupWithForm(config.popupAdd, (item) => {
+  createCard({ name: item.placeNameInput, link: item.urlPlaceInput }, cardTemplateSelector, handleCardClick)
 });
 
 const handleCardClick = (caption, image) => {
@@ -52,9 +52,7 @@ const cardsList = new Section(
   {
     data: initialCards,
     renderer: (item) => {
-      const cardElem = new Card(item, cardTemplateSelector, handleCardClick);
-      const cardElement = cardElem.generateCard();
-      cardsList.addItem(cardElement);
+      createCard (item, cardTemplateSelector, handleCardClick);
     },
   },
   config.elementsContainer
