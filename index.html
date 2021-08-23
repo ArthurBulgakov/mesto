@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+        <img class="header__logo" src="1f1e95914acec5e33236.svg" alt="Лого">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="129b9931c6310e37f775.svg" alt="Аватар">
+        <div class="profile__info">
+          <div class="profile__title">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button"></button>
+          </div>
+          <p class="profile__description">Исследователь океана</p>        
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+      <section class="elements">
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <div class="popup popup_type_edit">
+    <div class="popup__overlay popup__overlay_type_edit"></div>
+    <div class="popup__container">
+      <button class="popup__close-button popup__close-button_type_edit" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="popupFormEdit" id="popupFormEdit" novalidate>
+        <input class="popup__input" type="text" name="nameInput" id="nameInput" required minlength="2" maxlength="40" value=' '>
+        <span class="popup__error nameInput-error"></span>
+        <input class="popup__input" type="text" name="jobInput" id="jobInput" required minlength="2" maxlength="200" value=' '>
+        <span class="popup__error jobInput-error"></span>
+        <button class="popup__save-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>  
+  <div class="popup popup_type_add">
+    <div class="popup__overlay popup__overlay_type_add"></div>
+    <div class="popup__container">
+      <button class="popup__close-button popup__close-button_type_add" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="popupFormAdd" id="popupFormAdd" novalidate>
+        <input class="popup__input popup__input_type_add" type="text" id="placeNameInput" name="placeNameInput" placeholder="Название" required minlength="2" maxlength="40"> 
+        <span class="popup__error placeNameInput-error"></span>
+        <input class="popup__input popup__input_type_add" type="url" id="urlPlaceInput" name="urlPlaceInput" placeholder="Ссылка на картинку" required>
+        <span class="popup__error urlPlaceInput-error"></span>
+        <button class="popup__save-button" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>  
+  <div class="popup popup_type_card">
+    <div class="popup__overlay popup__overlay_type_card"></div>
+    <div class="popup__container popup__container_type_card">
+      <button class="popup__close-button popup__close-button_type_card" type="button"></button>
+      <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
+      <p class="popup__title popup__title_type_card"></p>
+    </div>
+  </div> 
+  <template id="cardTemplate">
+    <div class="element">
+      <button class="element__remove" type="button"></button>
+      <img class="element__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
+      <div class="element__description">
+        <h2 class="element__title"></h2>
+        <button class="element__like" type="button"></button>
+      </div>
+    </div>
+  </template>
+</body>
+</html>
