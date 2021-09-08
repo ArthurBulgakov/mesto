@@ -7,7 +7,7 @@ export default class Popup {
       if (evt.key === "Escape") {
         this.close();
       }
-    }
+    };
     this._escHandler = this._handleEscClose.bind(this);
   }
 
