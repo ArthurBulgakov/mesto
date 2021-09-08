@@ -1,0 +1,30 @@
+.profile__avatar-container {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin-right: 30px;
+  transition: opacity 0.2s ease-in;
+  position: relative;
+}
+
+@media (max-width: 920px) {
+  .profile__avatar-container {
+    margin-right: 0;
+  }
+}
+
+.profile__avatar-container:hover {
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover > .profile__avatar {
+  opacity: 0.5;
+}
+
+.profile__avatar-container:hover:before {
+  content: url(/src/images/changeAvatarIcon.svg);
+  position: absolute;
+  right: 48px;
+  top: 48px;
+  z-index: 2;
+}

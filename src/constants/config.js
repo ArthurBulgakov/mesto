@@ -9,8 +9,13 @@ const config = {
   popupAdd: ".popup_type_add",
   poupEdit: ".popup_type_edit",
   popupCard: ".popup_type_card",
+  popupDelete: ".popup_type_delete",
+  popupAvatar: ".popup_type_avatar",
+  profileAvatarContainer: ".profile__avatar-container",
   profileName: ".profile__name",
   profileDescription: ".profile__description",
+  profileAvatar: ".profile__avatar",
+  likeCounter: ".element__like-counter",
 };
 
 export { config };

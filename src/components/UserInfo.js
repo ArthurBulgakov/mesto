@@ -15,5 +15,4 @@ export default class UserInfo {
     this._name.textContent = item.nameInput;
     this._description.textContent = item.jobInput;
   }
-
 }
