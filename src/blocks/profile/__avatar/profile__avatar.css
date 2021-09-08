@@ -3,10 +3,5 @@
   width: 120px;
   border-radius: 50%;
   margin-right: 30px;
-}
-
-@media (max-width: 920px) {
-  .profile__avatar {
-    margin-right: 0;
-  }
+  object-fit: cover;
 }

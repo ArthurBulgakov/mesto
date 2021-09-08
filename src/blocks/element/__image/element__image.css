@@ -2,6 +2,8 @@
   width: 282px;
   height: 282px;
   z-index: 1;
+  object-fit: cover;
+  object-position: top;
 }
 
 .element__image:hover {
