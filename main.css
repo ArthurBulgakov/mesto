@@ -501,12 +501,7 @@ template {
   width: 120px;
   border-radius: 50%;
   margin-right: 30px;
-}
-
-@media (max-width: 920px) {
-  .profile__avatar {
-    margin-right: 0;
-  }
+  object-fit: cover;
 }
 /*!***********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__description/profile__description.css ***!
@@ -585,11 +580,6 @@ template {
   flex-direction: row;
 }
 
-@media (max-width: 920px) {
-  .profile__title {
-    padding-left: 28px;
-  }
-}
 /*!*********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__name/profile__name.css ***!
   \*********************************************************************************************************************************************************************/
@@ -617,6 +607,39 @@ template {
   .profile__name {
     max-width: 222px;
   }
+}
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-container/profile__avatar-container.css ***!
+  \*********************************************************************************************************************************************************************************************/
+.profile__avatar-container {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  margin-right: 30px;
+  transition: opacity 0.2s ease-in;
+  position: relative;
+}
+
+@media (max-width: 920px) {
+  .profile__avatar-container {
+    margin-right: 0;
+  }
+}
+
+.profile__avatar-container:hover {
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover > .profile__avatar {
+  opacity: 0.5;
+}
+
+.profile__avatar-container:hover:before {
+  content: url(a086f758840ae814ecde.svg);
+  position: absolute;
+  right: 48px;
+  top: 48px;
+  z-index: 2;
 }
 /*!**********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/elements.css ***!
@@ -682,6 +705,8 @@ template {
   width: 282px;
   height: 282px;
   z-index: 1;
+  object-fit: cover;
+  object-position: top;
 }
 
 .element__image:hover {
@@ -746,6 +771,16 @@ template {
   cursor: pointer;
 }
 
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__like-counter/element__like-counter.css ***!
+  \*************************************************************************************************************************************************************************************/
+.element__like-counter {
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+}
 /*!******************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/footer/footer.css ***!
   \******************************************************************************************************************************************************/
@@ -905,6 +940,7 @@ template {
     color: black;
     padding: 13px 0;
     margin-top: 17px;
+    padding-left: 5px;
 }
 
 .popup__input:first-of-type {
@@ -1067,6 +1103,12 @@ template {
   .popup__image {
     margin-top: 13px;
   }
+}
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__container/_type/popup__container_type_delete.css ***!
+  \*********************************************************************************************************************************************************************************************/
+.popup__container_type_delete {
+  min-height: 181px;
 }
 /*!********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/content/content.css ***!
