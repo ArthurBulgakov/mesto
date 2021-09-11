@@ -11,8 +11,16 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo(item) {
-    this._name.textContent = item.nameInput;
-    this._description.textContent = item.jobInput;
+  setUserInfo(userData) {
+    if (userData.name !== '') {
+      this._name.textContent = userData.name;
+    } else {
+      console.log('Что-то не так с именем')
+    }
+    if (userData.about !== '') {
+      this._description.textContent = userData.about;
+    } else {
+      console.log('Что-то не так с описанием')
+    }
   }
 }
