@@ -37,9 +37,9 @@
       <button class="popup__close-button popup__close-button_type_edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popupFormEdit" id="popupFormEdit" novalidate>
-        <input class="popup__input" type="text" name="nameInput" id="nameInput" required minlength="2" maxlength="40" value=' '>
+        <input class="popup__input" type="text" name="nameInput" id="nameInput" required minlength="2" maxlength="40" value=' ' novalidate>
         <span class="popup__error nameInput-error"></span>
-        <input class="popup__input" type="text" name="jobInput" id="jobInput" required minlength="2" maxlength="200" value=' '>
+        <input class="popup__input" type="text" name="jobInput" id="jobInput" required minlength="2" maxlength="200" value=' ' novalidate>
         <span class="popup__error jobInput-error"></span>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
@@ -51,9 +51,9 @@
       <button class="popup__close-button popup__close-button_type_add" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="popupFormAdd" id="popupFormAdd" novalidate>
-        <input class="popup__input popup__input_type_add" type="text" id="placeNameInput" name="placeNameInput" placeholder="Название" required minlength="2" maxlength="40"> 
+        <input class="popup__input popup__input_type_add" type="text" id="placeNameInput" name="placeNameInput" placeholder="Название" required minlength="2" maxlength="40" novalidate> 
         <span class="popup__error placeNameInput-error"></span>
-        <input class="popup__input popup__input_type_add" type="url" id="urlPlaceInput" name="urlPlaceInput" placeholder="Ссылка на картинку" required>
+        <input class="popup__input popup__input_type_add" type="url" id="urlPlaceInput" name="urlPlaceInput" placeholder="Ссылка на картинку" required novalidate>
         <span class="popup__error urlPlaceInput-error"></span>
         <button class="popup__save-button" type="submit">Создать</button>
       </form>
