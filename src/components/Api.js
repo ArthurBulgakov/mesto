@@ -4,6 +4,13 @@ export default class Api {
     this._cohort = cohort;
   }
 
+  _checkRes (res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+
   getUserInfo() {
     return fetch(`https://nomoreparties.co/v1/${this._cohort}/users/me`, {
       headers: {
@@ -12,14 +19,8 @@ export default class Api {
       },
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._checkRes(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   getUserId() {
@@ -30,14 +31,8 @@ export default class Api {
       },
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._checkRes(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   getCards() {
@@ -48,14 +43,8 @@ export default class Api {
       },
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._checkRes(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
   x;
 
@@ -72,14 +61,8 @@ export default class Api {
       }),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._checkRes(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   changeProfileAvatar(item) {
@@ -97,14 +80,8 @@ export default class Api {
       }
     )
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._checkRes(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   addCard(name, link) {
@@ -120,18 +97,11 @@ export default class Api {
       }),
     })
       .then((res) => {
-        if (res.ok) {
-          res.json();
-        } else {
-          return Promise.reject(`Ошибка: ${res.status}`);
-        }
+        return this._checkRes(res);
       })
       .then((res) => {
         return res;
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   deleteCard(cardId) {
@@ -146,15 +116,8 @@ export default class Api {
       }
     )
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject(`Ошибка: ${res.status}`);
-        }
+        return this._checkRes(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   likeCard(idCard) {
@@ -169,14 +132,8 @@ export default class Api {
       }
     )
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._checkRes(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   dislikeCard(idCard) {
@@ -191,13 +148,7 @@ export default class Api {
       }
     )
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this._checkRes(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 }

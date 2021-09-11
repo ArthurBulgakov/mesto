@@ -1,20 +1,19 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleFormSubmit, handleCreate) {
+  constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._popupSelector = popupSelector;
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector(".popup__form");
     this._submitButton = this._popup.querySelector(".popup__save-button");
-    this.handleCreate = handleCreate;
   }
 
-  open() {
-    if (this._popupSelector === ".popup_type_edit") {
-      this.handleCreate();
-    }
-    super.open();
+  fillInputs (values, firstInputID, secondInputId) {
+    this._nameInput = document.getElementById(`${firstInputID}`);
+    this._descriptionInput = document.getElementById(`${secondInputId}`);
+    this._nameInput.value = values.profileName;
+    this._descriptionInput.value = values.profileDescription;
   }
 
   _getInputValues() {
@@ -28,12 +27,7 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    if (
-      this._popupSelector === ".popup_type_add" ||
-      this._popupSelector === ".popup_type_avatar"
-    ) {
-      this._form.reset();
-    }
+    this._form.reset();
   }
 
   setEventListeners = () => {
@@ -41,7 +35,6 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues(), this._submitButton);
-      this.close();
     });
   };
 }

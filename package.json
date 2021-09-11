@@ -6,7 +6,7 @@
     "prettier": "^2.3.2"
   },
   "description": "## Описание проекта Сайт-лендинг в котором хранится информация о путешественнике и местах в которых он побывал.",
-  "main": "src/index.js",
+  "main": "src/page/index.js",
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",

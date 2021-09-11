@@ -4,6 +4,7 @@ const config = {
   submitButtonSelector: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_disabled",
   inputErrorClass: "popup__error",
+  popupInputError: "popup__input_error",
   errorClass: "popup__error_active",
   elementsContainer: ".elements",
   popupAdd: ".popup_type_add",
@@ -16,6 +17,8 @@ const config = {
   profileDescription: ".profile__description",
   profileAvatar: ".profile__avatar",
   likeCounter: ".element__like-counter",
+  nameInputId: "nameInput",
+  jobinputId: "jobInput",
 };
 
 export { config };

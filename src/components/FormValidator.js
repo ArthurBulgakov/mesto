@@ -1,3 +1,5 @@
+import { config } from "../constants/config";
+
 export default class FormValidator {
   constructor(config, form) {
     this._inputSelector = config.inputSelector;
@@ -20,17 +22,22 @@ export default class FormValidator {
       errorField.classList.remove(`.${this._errorClass}`);
       errorField.textContent = "";
     });
+    this._inputList.forEach((input) => {
+      input.classList.remove(config.popupInputError)
+    })
   };
 
   _checkValidity(inputElement) {
     const form = this._form;
     if (!inputElement.validity.valid) {
       const errorElement = form.querySelector(`.${inputElement.id}-error`);
+      inputElement.classList.add(config.popupInputError);
       errorElement.classList.add(this._errorClass);
       errorElement.textContent = inputElement.validationMessage;
     } else {
       const errorElement = form.querySelector(`.${inputElement.id}-error`);
       errorElement.classList.remove(this._errorClass);
+      inputElement.classList.remove(config.popupInputError);
       errorElement.textContent = "";
     }
   }
