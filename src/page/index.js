@@ -9,7 +9,7 @@ import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import PopupDelete from "../components/PopupDelete.js";
 import { userData } from "../constants/userData.js";
-import { changeButtonText, removeElementFromDOM } from "../utils/utils.js";
+import { addCardToDOM, changeButtonText, removeElementFromDOM, fillInputsPopupEditProfile} from "../utils/utils.js";
 
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -24,8 +24,6 @@ const formValidatorAdd = new FormValidtor(config, popupFormAdd);
 const formValidatorAvatar = new FormValidtor(config, popupFormAvatar);
 const api = new Api(userData.token, userData.cohort);
 let userId = null;
-let newLikes =null;
-
 
 const userInfo = new UserInfo({
   name: config.profileName,
@@ -45,7 +43,7 @@ const popupEditProfile = new PopupWithForm(
     .then(() => {
       popupEditProfile.close();
     })
-    .then(() => {
+    .finally(() => {
       submitButton.textContent = text;
     })
     .catch((err) => {
@@ -65,7 +63,7 @@ const popupAvatar = new PopupWithForm (
       .then(() => {
         popupAvatar.close();
       })
-      .then(() => {
+      .finally(() => {
         submitButton.textContent = text;
       })
       .catch((err) => {
@@ -75,8 +73,7 @@ const popupAvatar = new PopupWithForm (
 )
 
 const handleDeletePopup = (cardId, element) => {
-  popupDelete.open();
-  popupDelete.setEventListeners(cardId, element)
+  popupDelete.open(cardId, element);
 }
 
 const handleDeleteCard = (cardId, element) => {
@@ -93,12 +90,19 @@ const handleDeleteCard = (cardId, element) => {
 }
 
 const handleLikes = async (cardId, likes) => {
+  let newLikes = null;
   if (likes.find(item => { return item._id === userId})) {
-    const res = await api.dislikeCard(cardId)
-    newLikes = res.likes
+    try {const res = await api.dislikeCard(cardId)
+    newLikes = res.likes}
+    catch (e) {
+      console.log(e)
+    }
   } else {
-    const res = await api.likeCard(cardId)
-    newLikes = res.likes
+   try { const res = await api.likeCard(cardId)
+    newLikes = res.likes } 
+  catch (e) {
+      console.log(e)
+    }
   }
   return newLikes
 }
@@ -106,16 +110,16 @@ const handleLikes = async (cardId, likes) => {
 
 const popupDelete = new PopupDelete(config.popupDelete, handleDeleteCard);
 
-const updateCardsData = async () => {
-  try {
-    api.getCards().then((res) => {
+const updateCardsData = () => {
+    api.getCards()
+    .then((res) => {
       res.forEach((card) => {
         createCard(card, cardTemplateSelector, handleCardClick, handleDeletePopup, handleLikes);
       });
     })
-  } catch (e) {
-    console.log(e)
-  }
+    .catch((err) => {
+      console.log(err)
+    })
 };
 
 const cardsList = new Section(updateCardsData, config.elementsContainer);
@@ -125,13 +129,13 @@ const popupAdd = new PopupWithForm(
   (item, submitButton) => {
     const text = changeButtonText(submitButton);
     api.addCard(item.placeNameInput, item.urlPlaceInput)
-    .then(() => {
-      cardsList.renderItems();
+    .then((res) => {
+      addCardToDOM(generateCard(res, cardTemplateSelector, handleCardClick, handleDeletePopup, handleLikes), config);
      })
      .then(() => {
       popupAdd.close();
      })
-    .then(() => {
+    .finally(() => {
       submitButton.textContent = text;
      })
     .catch((err) => {
@@ -161,16 +165,19 @@ const handleCardClick = (caption, image) => {
 };
 
 const updateUserData = async () => {
-  const userData = await api.getUserInfo();
+  try {const userData = await api.getUserInfo();
   userId = userData._id;
   userInfo.setUserInfo(userData)
-  profileAvatar.src = userData.avatar;
+  profileAvatar.src = userData.avatar;}
+  catch (e) {
+    console.log(e)
+  }
 };
 
 editButton.addEventListener("click", () => {
   const values = userInfo.getUserInfo();
   popupEditProfile.open();
-  popupEditProfile.fillInputs(values, config.nameInputId, config.jobinputId)
+  fillInputsPopupEditProfile(values, config.nameInputId, config.jobinputId)
   formValidatorEdit.errorCleaner();
   formValidatorEdit.toggleButtonState();
 });
@@ -186,13 +193,19 @@ profileAvatarContainer.addEventListener("click", () => {
   formValidatorAvatar.errorCleaner();
 })
 
-updateUserData().then(() => {
-  cardsList.renderItems();
-});
+updateUserData()
+  .then(() => {
+    cardsList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+;
 popupEditProfile.setEventListeners();
 popupCard.setEventListeners();
 popupAdd.setEventListeners();
 popupAvatar.setEventListeners();
+popupDelete.setEventListeners()
 formValidatorEdit.enableValidation();
 formValidatorAdd.enableValidation();
 formValidatorAvatar.enableValidation();
