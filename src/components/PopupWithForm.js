@@ -9,13 +9,6 @@ export default class PopupWithForm extends Popup {
     this._submitButton = this._popup.querySelector(".popup__save-button");
   }
 
-  fillInputs (values, firstInputID, secondInputId) {
-    this._nameInput = document.getElementById(`${firstInputID}`);
-    this._descriptionInput = document.getElementById(`${secondInputId}`);
-    this._nameInput.value = values.profileName;
-    this._descriptionInput.value = values.profileDescription;
-  }
-
   _getInputValues() {
     this._formValues = {};
     this._inputList = this._form.querySelectorAll(".popup__input");

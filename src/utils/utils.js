@@ -8,4 +8,16 @@ const removeElementFromDOM = (element) => {
   element.remove();
 }
 
-export {changeButtonText, removeElementFromDOM}
+const addCardToDOM = (item, config) => {
+  const elementList = document.querySelector(config.elementsContainer)
+  elementList.prepend(item)
+}
+
+const fillInputsPopupEditProfile = (values, nameInputId, descriptionInputId) => {
+  const nameInput = document.getElementById(`${nameInputId}`);
+  const descriptionInput = document.getElementById(`${descriptionInputId}`);
+  nameInput.value = values.profileName;
+  descriptionInput.value = values.profileDescription;
+}
+
+export {changeButtonText, removeElementFromDOM, addCardToDOM, fillInputsPopupEditProfile}
