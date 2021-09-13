@@ -43,11 +43,11 @@ const popupEditProfile = new PopupWithForm(
     .then(() => {
       popupEditProfile.close();
     })
-    .finally(() => {
-      submitButton.textContent = text;
-    })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      submitButton.textContent = text;
     })
   }
 );
@@ -63,11 +63,11 @@ const popupAvatar = new PopupWithForm (
       .then(() => {
         popupAvatar.close();
       })
-      .finally(() => {
-        submitButton.textContent = text;
-      })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        submitButton.textContent = text;
       })
   }
 )
@@ -135,12 +135,12 @@ const popupAdd = new PopupWithForm(
      .then(() => {
       popupAdd.close();
      })
-    .finally(() => {
-      submitButton.textContent = text;
-     })
     .catch((err) => {
       console.log(err);
     })
+    .finally(() => {
+      submitButton.textContent = text;
+     })
 });
 
 const generateCard = (item, cardTemplateSelector, handleCardClick, handleDeletePopup, handleLikes) => {
